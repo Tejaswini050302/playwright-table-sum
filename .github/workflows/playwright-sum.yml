@@ -1,24 +1,27 @@
-name: Run Playwright Sum by 24f2004718@ds.study.iitm.ac.in
+name: Playwright Table Sum
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  scrape:
+  scrape-and-sum:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Dependencies
+        run: |
+          npm install
+          npx playwright install
 
-      - name: Run Playwright Script by 24f2004718@ds.study.iitm.ac.in
-        run: node sum-tables.js
+      - name: Run Scraper with 24f2004718@ds.study.iitm.ac.in
+        run: npm start
